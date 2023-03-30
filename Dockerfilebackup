@@ -1,0 +1,20 @@
+FROM seleniarm/standalone-chromium:latest
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y python3-venv python3-pip
+
+COPY requirements.txt /app/requirements.txt
+
+WORKDIR /app
+
+RUN python3 -m venv  venv
+
+RUN . venv/bin/activate && \
+    pip install --no-cache-dir -r requirements.txt
+
+RUN echo "=== Packages installed in virtual environment ===" && \
+    venv/bin/pip freeze
+
+COPY . /app

@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 @pytest.fixture(scope="module")
 def driver():
     # Set up Selenium WebDriver
-    driver = webdriver.Chrome()
+    driver = webdriver.Firefox()
     yield driver
     # Teardown Selenium WebDriver
     driver.quit()
